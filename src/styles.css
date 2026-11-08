@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@import "./offer/legacy.css";
+@import "./offer/redesign.css";
+
+@theme {
+  --color-bg: #07090d;
+  --color-surface: #10151c;
+  --color-fg: #e8eef6;
+  --color-muted: #93a0b3;
+  --color-el: #9ecbff;
+  --color-gas: #f3d48a;
+  --color-save: #8ed4a8;
+  --font-sans: "Outfit", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}

@@ -1,0 +1,669 @@
+/* Arc & Flame — thin dark desk for electricity (ice blue) and gas (candle gold). */
+
+@media screen {
+  html[data-theme="dark"] {
+    --bg: #07090d;
+    --bg2: #0c1117;
+    --panel: #10151c;
+    --panel2: #161c26;
+    --border: rgba(232, 238, 246, 0.09);
+    --border-soft: rgba(232, 238, 246, 0.055);
+    --green: #8ed4a8;
+    --green-dim: #234233;
+    --green-glow: rgba(142, 212, 168, 0.1);
+    --blue: #9ecbff;
+    --blue-dim: #17304e;
+    --blue-glow: rgba(126, 182, 255, 0.12);
+    --yellow: #f3d48a;
+    --yellow-dim: #3c3218;
+    --yellow-glow: rgba(243, 212, 138, 0.12);
+    --orange: #e4c07a;
+    --orange-dim: #3a2e16;
+    --orange-glow: rgba(228, 192, 122, 0.12);
+    --purple: #c4b6e8;
+    --text: #e8eef6;
+    --text-dim: #93a0b3;
+    --text-faint: #667386;
+    --red: #e7a09a;
+    --old: #e7a09a;
+    --old-glow: rgba(231, 160, 154, 0.1);
+    --new: #8ed4a8;
+    --new-glow: rgba(142, 212, 168, 0.1);
+    --shadow-sm: none;
+    --shadow-md: none;
+    --shadow-lg: 0 28px 70px rgba(0, 0, 0, 0.55);
+    --radius: 12px;
+    --radius-lg: 18px;
+    --el: #7eb6ff;
+    --gas: #f3d48a;
+    --ink-el: #0d141c;
+    --ink-gas: #14130e;
+  }
+
+  html[data-theme="dark"],
+  html[data-theme="dark"] body {
+    background-color: #07090d;
+    color: var(--text);
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: 0.011em;
+  }
+
+  html[data-theme="dark"] body {
+    position: relative;
+    z-index: 0;
+    background-color: #07090d;
+    background-image:
+      radial-gradient(720px 280px at 8% -40px, rgba(126, 182, 255, 0.07), transparent 70%),
+      radial-gradient(680px 260px at 92% -30px, rgba(243, 212, 138, 0.06), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  html[data-theme="dark"] body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(232, 238, 246, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232, 238, 246, 0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: linear-gradient(180deg, #000 0%, transparent 72%);
+  }
+
+  html[data-theme="dark"] .page,
+  html[data-theme="dark"] button,
+  html[data-theme="dark"] input,
+  html[data-theme="dark"] select,
+  html[data-theme="dark"] .comm-card,
+  html[data-theme="dark"] .cal-card {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 300;
+  }
+
+  html[data-theme="dark"] ::selection {
+    background: rgba(126, 182, 255, 0.28);
+    color: #f4f8fc;
+  }
+
+  /* ── header ── */
+  html[data-theme="dark"] .header {
+    background: rgba(16, 21, 28, 0.78);
+    border: 1px solid var(--border);
+    box-shadow: none;
+    backdrop-filter: blur(16px);
+    padding: 14px 22px 13px;
+  }
+
+  html[data-theme="dark"] .header::before {
+    height: 1px;
+    opacity: 1;
+    background: linear-gradient(90deg, transparent, var(--el) 18%, var(--el) 48%, var(--gas) 52%, var(--gas) 82%, transparent);
+  }
+
+  html[data-theme="dark"] .header-center::before {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 2px;
+    margin: 0 auto 8px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, var(--el) 0 50%, var(--gas) 50% 100%);
+  }
+
+  html[data-theme="dark"] .header .header-title-main {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 200;
+    font-size: 34px;
+    letter-spacing: -0.045em;
+    line-height: 0.95;
+    color: #eef3f8;
+    background: none;
+    -webkit-text-fill-color: #eef3f8;
+  }
+
+  html[data-theme="dark"] .client-badge {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  html[data-theme="dark"] .client-badge .k,
+  html[data-theme="dark"] .header-date-label,
+  html[data-theme="dark"] .supplier-label,
+  html[data-theme="dark"] .cons-highlight-label,
+  html[data-theme="dark"] .section-title,
+  html[data-theme="dark"] .ycard-label,
+  html[data-theme="dark"] .ycard-note {
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    color: var(--text-faint);
+  }
+
+  html[data-theme="dark"] .client-badge .name,
+  html[data-theme="dark"] .client-row .cn {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: #f2f6fb;
+  }
+
+  html[data-theme="dark"] .client-badge .name { font-size: 26px; }
+  html[data-theme="dark"] .client-row .cn { font-size: 18px; }
+
+  html[data-theme="dark"] .header .offer-date,
+  html[data-theme="dark"] .contract-range-value,
+  html[data-theme="dark"] .fee-value,
+  html[data-theme="dark"] .data-value,
+  html[data-theme="dark"] .cons-highlight-num,
+  html[data-theme="dark"] .ycard-num,
+  html[data-theme="dark"] .saving-num,
+  html[data-theme="dark"] .inline-edit-input,
+  html[data-theme="dark"] .hero .hero-num,
+  html[data-theme="dark"] .cm-pays b {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.03em;
+  }
+
+  html[data-theme="dark"] .header .offer-date {
+    font-size: 15px;
+    color: #f2f6fb;
+  }
+
+  html[data-theme="dark"] .header-validity-note {
+    font-weight: 300;
+    color: var(--text-dim);
+  }
+
+  /* ── commodity cards ── */
+  html[data-theme="dark"] .ecard {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: none;
+    border-radius: 18px;
+  }
+
+  html[data-theme="dark"] .ecard::before { display: none; }
+
+  html[data-theme="dark"] .ecard.ecard-el {
+    background:
+      linear-gradient(180deg, rgba(126, 182, 255, 0.07), transparent 38%),
+      var(--ink-el);
+    border-color: rgba(126, 182, 255, 0.22);
+    box-shadow: inset 2px 0 0 var(--el);
+  }
+
+  html[data-theme="dark"] .ecard.ecard-gas,
+  html[data-theme="dark"] .input-section.contract-gas {
+    --yellow: #f3d48a;
+    --yellow-glow: rgba(243, 212, 138, 0.12);
+  }
+
+  html[data-theme="dark"] .ecard.ecard-gas {
+    background:
+      linear-gradient(180deg, rgba(243, 212, 138, 0.08), transparent 40%),
+      var(--ink-gas);
+    border-color: rgba(243, 212, 138, 0.24);
+    box-shadow: inset 2px 0 0 var(--gas);
+  }
+
+  html[data-theme="dark"] .ecard-title {
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    font-size: 20px;
+  }
+
+  html[data-theme="dark"] .ecard-el .ecard-title { color: var(--el); }
+  html[data-theme="dark"] .ecard-gas .ecard-title { color: var(--gas); }
+
+  html[data-theme="dark"] .ecard-icon {
+    display: inline-flex;
+    align-items: center;
+    color: currentColor;
+  }
+
+  html[data-theme="dark"] .ecard-icon svg,
+  html[data-theme="dark"] .comm-card .ecard-icon svg {
+    display: block;
+  }
+
+  html[data-theme="dark"] .ecard-el .cons-highlight {
+    background: rgba(126, 182, 255, 0.06);
+    border: 1px solid rgba(126, 182, 255, 0.16);
+  }
+
+  html[data-theme="dark"] .ecard-gas .cons-highlight {
+    background: rgba(243, 212, 138, 0.06);
+    border: 1px solid rgba(243, 212, 138, 0.16);
+  }
+
+  html[data-theme="dark"] .ecard-el .cons-highlight-num { color: var(--el); font-weight: 400; }
+  html[data-theme="dark"] .ecard-gas .cons-highlight-num { color: var(--gas); font-weight: 400; }
+
+  html[data-theme="dark"] .supplier-value { font-weight: 400; }
+  html[data-theme="dark"] .ecard-el .supplier-value { color: var(--el); }
+  html[data-theme="dark"] .ecard-gas .supplier-value { color: var(--gas); }
+
+  html[data-theme="dark"] .data-label,
+  html[data-theme="dark"] .fee-label,
+  html[data-theme="dark"] .saving-text,
+  html[data-theme="dark"] .contract-range-label {
+    font-weight: 300;
+    color: var(--text-dim);
+  }
+
+  html[data-theme="dark"] .data-label-sub,
+  html[data-theme="dark"] .data-label-sub b {
+    font-weight: 300;
+    color: #9aa6b5;
+  }
+
+  html[data-theme="dark"] .data-unit,
+  html[data-theme="dark"] .inline-edit-unit,
+  html[data-theme="dark"] .input-unit,
+  html[data-theme="dark"] .fee-unit {
+    font-weight: 300;
+    color: var(--text-faint);
+  }
+
+  /* mode switch follows the commodity, not a shared orange */
+  html[data-theme="dark"] .fix-spot-badge {
+    border: 1px solid var(--border);
+    box-shadow: none;
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  html[data-theme="dark"] .ecard-el .fix-spot-badge { border-color: rgba(126, 182, 255, 0.28); }
+  html[data-theme="dark"] .ecard-gas .fix-spot-badge { border-color: rgba(243, 212, 138, 0.28); }
+
+  html[data-theme="dark"] .fix-spot-badge .fs-opt {
+    background: transparent;
+    color: var(--text-faint);
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  html[data-theme="dark"] .ecard-el .fix-spot-badge .fs-opt.active-fix,
+  html[data-theme="dark"] .ecard-el .fix-spot-badge .fs-opt.active-spot {
+    background: rgba(126, 182, 255, 0.16);
+    color: #d7ebff;
+  }
+
+  html[data-theme="dark"] .ecard-gas .fix-spot-badge .fs-opt.active-fix,
+  html[data-theme="dark"] .ecard-gas .fix-spot-badge .fs-opt.active-spot {
+    background: rgba(243, 212, 138, 0.16);
+    color: #fff1cc;
+  }
+
+  html[data-theme="dark"] .ecard-el .fix-spot-badge .fs-opt:hover { color: var(--el); background: rgba(126, 182, 255, 0.08); }
+  html[data-theme="dark"] .ecard-gas .fix-spot-badge .fs-opt:hover { color: var(--gas); background: rgba(243, 212, 138, 0.08); }
+
+  html[data-theme="dark"] .reg-badge {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    font-size: 10px;
+  }
+
+  html[data-theme="dark"] .cat-switch {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+  }
+
+  html[data-theme="dark"] .cat-switch .track {
+    background: #1c2430;
+    border-color: rgba(232, 238, 246, 0.12);
+  }
+
+  html[data-theme="dark"] .cat-switch.on .track {
+    background: rgba(142, 212, 168, 0.16);
+    border-color: rgba(142, 212, 168, 0.55);
+  }
+
+  /* offer price — the line you sell */
+  html[data-theme="dark"] .energy-grid .ecard .offer-row {
+    border-radius: 12px;
+    box-shadow: none;
+    margin-top: 16px;
+  }
+
+  html[data-theme="dark"] .energy-grid .ecard-el .offer-row {
+    background: rgba(126, 182, 255, 0.06);
+    border: 1px solid rgba(126, 182, 255, 0.28);
+    border-left: 2px solid var(--el);
+  }
+
+  html[data-theme="dark"] .energy-grid .ecard-gas .offer-row {
+    background: rgba(243, 212, 138, 0.06);
+    border: 1px solid rgba(243, 212, 138, 0.28);
+    border-left: 2px solid var(--gas);
+  }
+
+  html[data-theme="dark"] .energy-grid .ecard .offer-row::after {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 400;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    padding: 3px 8px;
+    top: -8px;
+    border-radius: 999px;
+    box-shadow: none;
+  }
+
+  html[data-theme="dark"] .energy-grid .ecard-el .offer-row::after {
+    background: #101820;
+    color: var(--el);
+    border: 1px solid rgba(126, 182, 255, 0.35);
+  }
+
+  html[data-theme="dark"] .energy-grid .ecard-gas .offer-row::after {
+    background: #16140e;
+    color: var(--gas);
+    border: 1px solid rgba(243, 212, 138, 0.35);
+  }
+
+  html[data-theme="dark"] .ecard-el .offer-label { color: var(--el); font-weight: 400; }
+  html[data-theme="dark"] .ecard-gas .offer-label { color: var(--gas); font-weight: 400; }
+
+  html[data-theme="dark"] .ecard .inline-edit-input.inline-edit-offer.el-color,
+  html[data-theme="dark"] .inline-edit-input.el-color {
+    color: var(--el);
+    border-color: rgba(126, 182, 255, 0.35);
+    font-weight: 400;
+    background: rgba(7, 9, 13, 0.45);
+    text-shadow: none;
+  }
+
+  html[data-theme="dark"] .ecard .inline-edit-input.inline-edit-offer.gas-color,
+  html[data-theme="dark"] .inline-edit-input.gas-color {
+    color: var(--gas);
+    border-color: rgba(243, 212, 138, 0.4);
+    font-weight: 400;
+    background: rgba(7, 9, 13, 0.45);
+    text-shadow: none;
+  }
+
+  html[data-theme="dark"] .inline-edit-input,
+  html[data-theme="dark"] .fee-input-wrap input,
+  html[data-theme="dark"] .input-wrap input,
+  html[data-theme="dark"] .input-wrap select {
+    background: rgba(7, 9, 13, 0.45);
+    border: 1px solid rgba(232, 238, 246, 0.12);
+    color: var(--text);
+    font-weight: 400;
+    box-shadow: none;
+  }
+
+  html[data-theme="dark"] .inline-edit-input:focus,
+  html[data-theme="dark"] .fee-input-wrap input:focus {
+    border-color: rgba(232, 238, 246, 0.4);
+    box-shadow: 0 0 0 3px rgba(232, 238, 246, 0.06);
+  }
+
+  html[data-theme="dark"] .ecard-el .inline-edit-input.el-color:focus {
+    border-color: var(--el);
+    box-shadow: 0 0 0 3px var(--blue-glow);
+  }
+
+  html[data-theme="dark"] .ecard-gas .inline-edit-input.gas-color:focus {
+    border-color: var(--gas);
+    box-shadow: 0 0 0 3px var(--yellow-glow);
+  }
+
+  html[data-theme="dark"] #inp_el2027,
+  html[data-theme="dark"] #inp_el2028,
+  html[data-theme="dark"] #inp_gas2027,
+  html[data-theme="dark"] #inp_gas2028 {
+    color: var(--old);
+    font-weight: 400;
+  }
+
+  html[data-theme="dark"] .input-field.editable .input-wrap input,
+  html[data-theme="dark"] .input-field.editable .input-wrap select,
+  html[data-theme="dark"] .fee-input-wrap input {
+    border-color: rgba(232, 238, 246, 0.14);
+  }
+
+  html[data-theme="dark"] .contract-el .input-wrap input:focus,
+  html[data-theme="dark"] .contract-el .input-wrap select:focus {
+    border-color: var(--el);
+    box-shadow: 0 0 0 3px var(--blue-glow);
+  }
+
+  html[data-theme="dark"] .contract-gas .input-wrap input:focus,
+  html[data-theme="dark"] .contract-gas .input-wrap select:focus {
+    border-color: var(--gas);
+    box-shadow: 0 0 0 3px var(--yellow-glow);
+  }
+
+  /* savings stay quiet sage, not a shout */
+  html[data-theme="dark"] .ecard.ecard-el .saving-badge,
+  html[data-theme="dark"] .ecard.ecard-gas .saving-badge {
+    background: linear-gradient(90deg, rgba(142, 212, 168, 0.08), transparent 80%);
+    border: none;
+    border-left: 2px solid var(--new);
+    border-radius: 10px;
+    box-shadow: none;
+  }
+
+  html[data-theme="dark"] .ecard .saving-num,
+  html[data-theme="dark"] .saving-num { color: var(--new); font-weight: 400; }
+  html[data-theme="dark"] .ecard .saving-text { color: #d5e6dc; font-weight: 300; }
+  html[data-theme="dark"] .sav-month { font-weight: 300; }
+  html[data-theme="dark"] .sav-month b {
+    color: var(--new);
+    font-weight: 400;
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  /* ── lower panels ── */
+  html[data-theme="dark"] .input-section,
+  html[data-theme="dark"] .fees-section,
+  html[data-theme="dark"] .ycard {
+    background: rgba(16, 21, 28, 0.9);
+    border: 1px solid var(--border);
+    box-shadow: none;
+  }
+
+  html[data-theme="dark"] .input-section.contract-el {
+    background:
+      linear-gradient(180deg, rgba(126, 182, 255, 0.06), transparent 55%),
+      rgba(13, 20, 28, 0.94);
+    border-color: rgba(126, 182, 255, 0.2);
+    box-shadow: inset 2px 0 0 var(--el);
+  }
+
+  html[data-theme="dark"] .input-section.contract-gas {
+    background:
+      linear-gradient(180deg, rgba(243, 212, 138, 0.07), transparent 55%),
+      rgba(20, 19, 14, 0.94);
+    border-color: rgba(243, 212, 138, 0.22);
+    box-shadow: inset 2px 0 0 var(--gas);
+  }
+
+  html[data-theme="dark"] .input-section.contract-el .section-title,
+  html[data-theme="dark"] .input-section.contract-gas .section-title {
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    text-transform: none;
+    color: var(--text);
+  }
+
+  html[data-theme="dark"] .input-section.contract-el .section-title { color: var(--el); }
+  html[data-theme="dark"] .input-section.contract-gas .section-title { color: var(--gas); }
+
+  html[data-theme="dark"] .fees-section .section-title { color: var(--text-faint); }
+
+  html[data-theme="dark"] .ycard-num { color: var(--new); font-weight: 400; }
+  html[data-theme="dark"] .ycard-total {
+    background:
+      linear-gradient(180deg, rgba(142, 212, 168, 0.08), transparent 70%),
+      rgba(16, 21, 28, 0.94);
+    border: 1px solid rgba(142, 212, 168, 0.28);
+    box-shadow: inset 2px 0 0 var(--new);
+  }
+  html[data-theme="dark"] .ycard-total .ycard-label { color: var(--new); font-weight: 400; }
+  html[data-theme="dark"] .ycard-total .ycard-num { color: #d9f5e4; font-weight: 400; }
+  html[data-theme="dark"] .ycard:hover { transform: none; box-shadow: none; }
+
+  /* ── toolbar ── */
+  html[data-theme="dark"] .pdf-export-btn:not(.round-p),
+  html[data-theme="dark"] .import-link,
+  html[data-theme="dark"] .import-tucked .import-link,
+  html[data-theme="dark"] .pdf-export-btn.round-p {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(232, 238, 246, 0.12);
+    color: #c5d0dc;
+    box-shadow: none;
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    font-size: 12.5px;
+  }
+
+  html[data-theme="dark"] .pdf-export-btn:not(.round-p):hover,
+  html[data-theme="dark"] .import-link:hover,
+  html[data-theme="dark"] .import-tucked .import-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(232, 238, 246, 0.28);
+    color: #f4f7fb;
+  }
+
+  html[data-theme="dark"] #loadPricesBtn { color: #b9d7ff; border-color: rgba(126, 182, 255, 0.28); }
+  html[data-theme="dark"] #loadPricesBtn:hover { border-color: var(--el); color: #e7f3ff; }
+  html[data-theme="dark"] #loadOfferBtn,
+  html[data-theme="dark"] #saveOfferBtn { color: #f3e2b4; border-color: rgba(243, 212, 138, 0.28); }
+  html[data-theme="dark"] #loadOfferBtn:hover,
+  html[data-theme="dark"] #saveOfferBtn:hover { border-color: var(--gas); color: #fff6df; }
+  html[data-theme="dark"] #pdfExportBtn { color: #ddd4f6; border-color: rgba(196, 182, 232, 0.28); }
+  html[data-theme="dark"] .import-tucked .import-link { color: #c5d0dc; border-color: rgba(232, 238, 246, 0.12); background: rgba(255, 255, 255, 0.03); }
+
+  html[data-theme="dark"] .pdf-export-btn.round-p {
+    color: var(--new);
+    border-color: rgba(142, 212, 168, 0.4);
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  html[data-theme="dark"] .pdf-export-btn svg,
+  html[data-theme="dark"] .import-link svg { display: block; }
+
+  html[data-theme="dark"] .import-status.ok {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(232, 238, 246, 0.12);
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  html[data-theme="dark"] .theme-tucked { display: none; }
+
+  /* meters, if present */
+  html[data-theme="dark"] .pbar {
+    background: transparent;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  html[data-theme="dark"] .pbar-track {
+    height: 3px;
+    background: rgba(232, 238, 246, 0.08);
+    box-shadow: none;
+    border-radius: 99px;
+  }
+  html[data-theme="dark"] .pbar-fill { box-shadow: none; border-radius: 99px; }
+  html[data-theme="dark"] .pbar-fill.old,
+  html[data-theme="dark"] .pbar-fill.old.worse {
+    background: rgba(231, 160, 154, 0.55);
+  }
+  html[data-theme="dark"] .pbar-fill.new { background: var(--new); }
+  html[data-theme="dark"] .pbar-k,
+  html[data-theme="dark"] .pbar-v { font-weight: 400; }
+  html[data-theme="dark"] .pbar-pct {
+    background: transparent;
+    border: 1px solid rgba(142, 212, 168, 0.4);
+    color: var(--new);
+    font-weight: 400;
+  }
+
+  /* ── commission + calendar ── */
+  html[data-theme="dark"] .comm-card,
+  html[data-theme="dark"] .cal-card {
+    background: #10151c;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-lg);
+  }
+
+  html[data-theme="dark"] .comm-card::before {
+    height: 1px;
+    background: linear-gradient(90deg, var(--el), var(--gas));
+  }
+
+  html[data-theme="dark"] .comm-title {
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 200;
+    letter-spacing: -0.04em;
+    background: none;
+    -webkit-text-fill-color: #eef3f8;
+    color: #eef3f8;
+  }
+
+  html[data-theme="dark"] .hero {
+    background: rgba(142, 212, 168, 0.05);
+    border: 1px solid rgba(142, 212, 168, 0.28);
+    box-shadow: none;
+  }
+
+  html[data-theme="dark"] .hero .hero-num { color: var(--new); font-weight: 400; }
+  html[data-theme="dark"] .cm-pt .cm-hlbox {
+    border-width: 1px;
+    box-shadow: none;
+    font-weight: 400;
+  }
+
+  html[data-theme="dark"] .cal-day,
+  html[data-theme="dark"] .cal-year,
+  html[data-theme="dark"] .cal-btn {
+    font-weight: 400;
+  }
+
+  html[data-theme="dark"] footer {
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  html[data-theme="dark"] .header .header-title-main { font-size: 32px; }
+  html[data-theme="dark"] .client-badge .name { font-size: 22px; }
+  html[data-theme="dark"] .cons-highlight-num { font-size: 22px; }
+  html[data-theme="dark"] .ycard-num { font-size: 22px; }
+  html[data-theme="dark"] .ycard-total .ycard-num { font-size: 24px; }
+  html[data-theme="dark"] .energy-grid .ecard .inline-edit-input.inline-edit-offer { font-size: 20px; }
+}
+
+@media screen and (max-width: 768px) {
+  html[data-theme="dark"] .header .header-title-main { font-size: 28px; }
+  html[data-theme="dark"] .page { padding-bottom: 28px; }
+  html[data-theme="dark"] .pdf-export-btn:not(.round-p),
+  html[data-theme="dark"] .import-link {
+    min-height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="dark"] *,
+  html[data-theme="dark"] *::before,
+  html[data-theme="dark"] *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
